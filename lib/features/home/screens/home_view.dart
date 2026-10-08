@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/features/home/widgets/no_weather_widget.dart';
+import 'package:weather_app/features/home/widgets/weather_widget.dart';
 import 'package:weather_app/features/search/screens/search_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -23,7 +24,17 @@ class HomeView extends StatelessWidget {
           const SizedBox(width: 20),
         ],
       ),
-      body: NoWeatherWidget(),
+      body: Center(
+        child: WeatherWidget(
+          city: 'Luxor',
+          time: '34:32',
+          imageUrl: 'imageUrl',
+          averageTemp: '30',
+          maxTemp: '48',
+          minTemp: '10',
+          weather: "Rain",
+        ),
+      ),
     );
   }
 }
