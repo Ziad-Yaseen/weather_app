@@ -17,13 +17,13 @@ class WeatherModel {
     this.imageUrl,
   });
 
-  factory WeatherModel.fromJson() => WeatherModel(
-    city: 'city',
-    date: 'date',
-    imageUrl: 'imageUrl',
-    temp: 'temp',
-    maxTemp: 'maxTemp',
-    mixTemp: 'mixTemp',
-    weatherStatus: 'weatherStatus',
+  factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
+    city: json['location']['name'],
+    date: json['current']['last_updated'],
+    imageUrl: json['current']['condition']['icon'],
+    temp: json['current']['temp_c'],
+    maxTemp: json['forecast']['forecastday']['day']['maxtemp_c'],
+    mixTemp: json['forecast']['forecastday']['day']['mintemp_c'],
+    weatherStatus: json['current']['condition']['text'],
   );
 }
