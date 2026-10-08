@@ -2,9 +2,9 @@ class WeatherModel {
   final String city;
   final String date;
   final String? imageUrl;
-  final String temp;
-  final String maxTemp;
-  final String mixTemp;
+  final double temp;
+  final double maxTemp;
+  final double mixTemp;
   final String weatherStatus;
 
   WeatherModel({
