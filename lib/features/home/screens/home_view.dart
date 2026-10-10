@@ -24,17 +24,7 @@ class HomeView extends StatelessWidget {
           const SizedBox(width: 20),
         ],
       ),
-      body: Center(
-        child: WeatherWidget(
-          city: 'Luxor',
-          time: '34:32',
-          imageUrl: 'imageUrl',
-          averageTemp: '30',
-          maxTemp: '48',
-          minTemp: '10',
-          weather: "Rain",
-        ),
-      ),
+      body: Center(child: WeatherWidget()),
     );
   }
 }
