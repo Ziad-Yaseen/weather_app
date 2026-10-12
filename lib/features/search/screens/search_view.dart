@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/core/models/weather_model.dart';
+import 'package:weather_app/core/repositories/weather_repository.dart';
+import 'package:weather_app/core/services/weather_service.dart';
+import 'package:weather_app/features/home/screens/home_view.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
+
+  Future<WeatherModel> getWeather(String city) async {
+    WeatherService service = WeatherService();
+    WeatherRepository repo = WeatherRepository(service);
+    return repo.fetchCurrentWeather(city);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +21,16 @@ class SearchView extends StatelessWidget {
         padding: const EdgeInsets.all(24.0),
         child: Center(
           child: TextField(
-            onSubmitted: (value) {},
+            onSubmitted: (value) async {
+              WeatherModel weather = await getWeather(value);
+              if (!context.mounted) return;
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) => HomeView(weather: weather),
+                ),
+                (route) => false,
+              );
+            },
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
               label: Text('Search'),

@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app/core/models/weather_model.dart';
 
 class WeatherWidget extends StatelessWidget {
-  const WeatherWidget({super.key});
+  const WeatherWidget({super.key, required this.weather});
+  final WeatherModel weather;
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +12,12 @@ class WeatherWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'Luxor',
+          weather.city,
           style: const TextStyle(fontSize: 26, fontWeight: FontWeight(700)),
         ),
         const SizedBox(height: 20),
         Text(
-          'Updated at: 09:12',
+          'Updated at: ${weather.date}',
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight(400)),
         ),
         const SizedBox(height: 60),
@@ -25,7 +27,7 @@ class WeatherWidget extends StatelessWidget {
             CachedNetworkImage(
               width: 80,
               height: 80,
-              imageUrl: 'image url',
+              imageUrl: 'https:${weather.imageUrl}',
               errorWidget: (context, url, error) => Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
@@ -41,14 +43,14 @@ class WeatherWidget extends StatelessWidget {
             ),
             // Image.network(imageUrl),
             Text(
-              '12°C',
+              '${weather.temp}°C',
               style: const TextStyle(fontSize: 22, fontWeight: FontWeight(700)),
             ),
             Column(
               mainAxisAlignment: .center,
               children: [
                 Text(
-                  'Max temp: 24°C',
+                  'Max temp: ${weather.maxTemp}°C',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight(400),
@@ -56,7 +58,7 @@ class WeatherWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Min temp: 11°C',
+                  'Min temp: ${weather.mixTemp}°C',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight(400),
@@ -68,7 +70,7 @@ class WeatherWidget extends StatelessWidget {
         ),
         const SizedBox(height: 88),
         Text(
-          'Rain',
+          weather.weatherStatus,
           style: const TextStyle(fontSize: 32, fontWeight: FontWeight(700)),
         ),
       ],
