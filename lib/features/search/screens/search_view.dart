@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/core/models/weather_model.dart';
-import 'package:weather_app/core/repositories/weather_repository.dart';
-import 'package:weather_app/core/services/weather_service.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
-
-  Future<WeatherModel> getWeather(String city) async {
-    WeatherService service = WeatherService();
-    WeatherRepository repo = WeatherRepository(service);
-    return repo.fetchCurrentWeather(city);
-  }
 
   @override
   Widget build(BuildContext context) {
