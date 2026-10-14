@@ -8,7 +8,7 @@ class WeatherCubit extends Cubit<WeatherStates> {
   getWeather(value) async {
     try {
       WeatherModel weather = await getWeather(value);
-      emit(WeatherLoadedState());
+      emit(WeatherLoadedState(weather));
     } on Exception catch (e) {
       emit(WeatherFailureState(e.toString()));
     }
