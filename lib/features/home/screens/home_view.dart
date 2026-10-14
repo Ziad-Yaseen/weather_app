@@ -5,8 +5,7 @@ import 'package:weather_app/features/home/widgets/weather_widget.dart';
 import 'package:weather_app/features/search/screens/search_view.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key, this.weather});
-  final WeatherModel? weather;
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +25,7 @@ class HomeView extends StatelessWidget {
           const SizedBox(width: 20),
         ],
       ),
-      body: Center(
-        child: weather == null
-            ? const NoWeatherWidget()
-            : WeatherWidget(weather: weather!),
-      ),
+      body: Center(child: const NoWeatherWidget()),
     );
   }
 }
