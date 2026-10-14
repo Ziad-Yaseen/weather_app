@@ -3,7 +3,7 @@ import 'package:weather_app/core/models/weather_model.dart';
 import 'package:weather_app/features/home/bloc/weather_states.dart';
 
 class WeatherCubit extends Cubit<WeatherStates> {
-  WeatherCubit(super.initialState);
+  WeatherCubit() : super(NoWeatherState());
 
   getWeather(value) async {
     try {
