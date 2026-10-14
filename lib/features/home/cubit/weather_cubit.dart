@@ -7,7 +7,7 @@ import 'package:weather_app/features/home/bloc/weather_states.dart';
 class WeatherCubit extends Cubit<WeatherStates> {
   WeatherCubit() : super(NoWeatherState());
 
-  getWeather(value) async {
+  Future<void> getWeather(String value) async {
     try {
       WeatherModel weather = await fetchWeather(value);
       emit(WeatherLoadedState(weather));
