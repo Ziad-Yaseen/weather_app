@@ -22,14 +22,7 @@ class SearchView extends StatelessWidget {
         child: Center(
           child: TextField(
             onSubmitted: (value) async {
-              WeatherModel weather = await getWeather(value);
-              if (!context.mounted) return;
-              Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                  builder: (context) => HomeView(weather: weather),
-                ),
-                (route) => false,
-              );
+              Navigator.pop(context);
             },
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
