@@ -22,3 +22,11 @@ class WeatherCubit extends Cubit<WeatherStates> {
     return repo.fetchCurrentWeather(city);
   }
 }
+
+class Animal{
+  int number = 7;
+  void numb() {
+    int number = 6;
+  }
+
+}
