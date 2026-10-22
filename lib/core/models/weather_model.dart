@@ -1,6 +1,6 @@
 class WeatherModel {
   final String city;
-  final String date;
+  final DateTime date;
   final String imageUrl;
   final double temp;
   final double maxTemp;
@@ -19,7 +19,7 @@ class WeatherModel {
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
     city: json['location']['name'] ?? 'Unknown City',
-    date: json['current']['last_updated'] ?? DateTime.now().toString(),
+    date: DateTime.parse(json['current']['last_updated']) ?? DateTime.now(),
     imageUrl: json['current']['condition']['icon'] ?? 'No Image',
     temp: json['forecast']['forecastday'][0]['day']['avgtemp_c'] ?? 0,
     maxTemp: json['forecast']['forecastday'][0]['day']['maxtemp_c'] ?? 0,
@@ -27,3 +27,5 @@ class WeatherModel {
     weatherStatus: json['current']['condition']['text'] ?? 'Unknown status',
   );
 }
+
+DateTime stringToDateTime(String value) => DateTime.parse(value);

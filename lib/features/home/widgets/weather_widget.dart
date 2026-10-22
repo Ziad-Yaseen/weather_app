@@ -17,7 +17,7 @@ class WeatherWidget extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Text(
-          'Updated at: ${weather.date}',
+          'Updated at: ${weather.date.hour}:${weather.date.minute}',
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight(400)),
         ),
         const SizedBox(height: 60),
