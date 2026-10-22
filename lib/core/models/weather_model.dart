@@ -19,7 +19,7 @@ class WeatherModel {
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
     city: json['location']['name'] ?? 'Unknown City',
-    date: DateTime.parse(json['current']['last_updated']) ?? DateTime.now(),
+    date: DateTime.tryParse(json['current']['last_updated']) ?? DateTime.now(),
     imageUrl: json['current']['condition']['icon'] ?? 'No Image',
     temp: json['forecast']['forecastday'][0]['day']['avgtemp_c'] ?? 0,
     maxTemp: json['forecast']['forecastday'][0]['day']['maxtemp_c'] ?? 0,
